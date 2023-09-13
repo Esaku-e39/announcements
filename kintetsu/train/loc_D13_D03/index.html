@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>近鉄-車内放送</title>
+    <meta charset="UTF-8">
+    <!-- jQuery読み込み -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- キャッシュ対策 -->
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="index.css">
+    <script src="../00-menu/menu.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <!-- 音声指定 -->
+    <!-- 軽量化のため読み込みはjsで！！ preloadはnoneに設定 -->
+    <div id="audioLoad">
+        <audio src='sound/00-door_left.wav' id='door_left' preload='none'></audio>
+        <audio src='sound/00-door_right.wav' id='door_right' preload='none'></audio>
+        <audio src='sound/D13_3.wav' id='D13_3' preload='none'></audio>
+        <audio src='sound/D12_2.wav' id='D12_2' preload='none'></audio>
+        <audio src='sound/D11_1.wav' id='D11_1' preload='none'></audio>
+        <audio src='sound/D11_2.wav' id='D11_2' preload='none'></audio>
+        <audio src='sound/D10_1.wav' id='D10_1' preload='none'></audio>
+        <audio src='sound/D10_2.wav' id='D10_2' preload='none'></audio>
+        <audio src='sound/D09_2.wav' id='D09_2' preload='none'></audio>
+        <audio src='sound/D08_1.wav' id='D08_1' preload='none'></audio>
+        <audio src='sound/D08_2.wav' id='D08_2' preload='none'></audio>
+        <audio src='sound/D07_1.wav' id='D07_1' preload='none'></audio>
+        <audio src='sound/D07_2.wav' id='D07_2' preload='none'></audio>
+        <audio src='sound/D06_2.wav' id='D06_2' preload='none'></audio>
+        <audio src='sound/D05_1.wav' id='D05_1' preload='none'></audio>
+        <audio src='sound/D05_2.wav' id='D05_2' preload='none'></audio>
+        <audio src='sound/D04_2.wav' id='D04_2' preload='none'></audio>
+        <audio src='sound/D03_2.wav' id='D03_2' preload='none'></audio>
+    </div>
+    
+
+    <header id="header" style="font-size:1.2rem;">
+        <span style="color:#0070ee"><b>普通</b></span>
+        <b>高安</b>発
+        <b>大阪上本町</b>行き
+    </header>
+
+    <div style="color:#ff0000">
+        <b>！！再生ボタン連打厳禁！！</b><br>
+        予期せぬ動作をする場合があります。
+    </div>
+
+    一時停止 <button class="stop" value="pause">a</button>
+    再開 <button class="play" value="resume">a</button>
+    <br><br>
+    音声全てキャンセル <button class="stop" value="cancel">a</button><br>
+
+    <div class="menu">
+        <!-- ----------------------------------------- -->
+        <!-- メニュー放送挿入部 -->
+        <!-- ----------------------------------------- -->
+    </div>
+    
+    <br>
+    <details>
+        <summary>高安 停車中</summary>
+        日英 <button class="play" value="D13_3">a</button>
+    </details>
+    <br>
+    <details>
+        <summary>まもなく 河内山本</summary>
+        日英 <button class="play" value="D12_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-D12_2" value="left" checked>左</label>
+        <label><input type="radio" name="door-D12_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-D12_2" value="right">右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 八尾</summary>
+        日英 <button class="play" value="D11_1">a</button>
+    </details>
+    <details>
+        <summary>まもなく 八尾</summary>
+        日英 <button class="play" value="D11_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-D11_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-D11_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-D11_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 久宝寺口</summary>
+        日英 <button class="play" value="D10_1">a</button>
+    </details>
+    <details>
+        <summary>まもなく 久宝寺口</summary>
+        日英 <button class="play" value="D10_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-D10_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-D10_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-D10_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>まもなく 弥刀</summary>
+        日英 <button class="play" value="D09_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-D09_2" value="left" checked>左</label>
+        <label><input type="radio" name="door-D09_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-D09_2" value="right">右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 長瀬</summary>
+        日英 <button class="play" value="D08_1">a</button>
+    </details>
+    <details>
+        <summary>まもなく 長瀬</summary>
+        日英 <button class="play" value="D08_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-D08_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-D08_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-D08_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 俊徳道</summary>
+        日英 <button class="play" value="D07_1">a</button>
+    </details>
+    <details>
+        <summary>まもなく 俊徳道</summary>
+        日英 <button class="play" value="D07_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-D07_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-D07_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-D07_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>まもなく 布施</summary>
+        日英 <button class="play" value="D06_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-D06_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-D06_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-D06_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 今里</summary>
+        日英 <button class="play" value="D05_1">a</button>
+    </details>
+    <details>
+        <summary>まもなく 今里</summary>
+        日英 <button class="play" value="D05_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-D05_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-D05_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-D05_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>まもなく 鶴橋</summary>
+        日英 <button class="play" value="D04_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-D04_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-D04_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-D04_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>まもなく 大阪上本町</summary>
+        日英 <button class="play" value="D03_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-D03_2" value="left" checked>左</label>
+        <label><input type="radio" name="door-D03_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-D03_2" value="right">右</label>
+    </details>
+
+
+    <footer id="footer">
+
+        <ul>
+            <li><a href="../../../index.html">Home</a></li>
+            <li><a href="../../index.html">Kintetsu</a></li>
+            <li><a href="../index.html">Another Train</a></li>
+        </ul>
+
+        <p></p>
+
+    </footer>
+</body>
+
+</html>

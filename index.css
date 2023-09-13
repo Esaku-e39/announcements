@@ -1,0 +1,14 @@
+body {
+    text-align: center;
+    /* 将来的にフォントを変えたい  https://kuneoresearch.com/webfont-8bit-game/ */
+}
+
+select {
+    font-size: 1.2rem;
+}
+
+.company {
+    font-size: 1.2rem;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
