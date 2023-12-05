@@ -2,6 +2,16 @@ $(() => {
     let playList = [];
     let playing = false;
 
+    //音量
+    $("#volume").on('input', () => {
+        $("#voral_range").html($("#volume").val());
+        let i = 0;
+        while (i < playList.length) {
+            $("#" + playList[i]).get(0).volume = $("#volume").val();
+            i = i + 1;
+        }
+    });
+    
     function playaudio(selected) {
         $("#" + selected).get(0).load();
         $("#" + selected).get(0).currentTime = 0;

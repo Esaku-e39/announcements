@@ -1,0 +1,34 @@
+body {
+    text-align: center;
+    /* 将来的にフォントを変えたい  https://kuneoresearch.com/webfont-8bit-game/ */
+}
+
+select {
+    font-size: 1.2rem;
+}
+
+#footer {
+    border-top: solid 1px lightgray;
+    padding-bottom: 10px;
+}
+
+#footer ul {
+    text-align: center;
+}
+
+#footer ul li {
+    padding: 0 4px;
+    display: inline;
+}
+
+/* ///////////////////////////////// */
+.train {
+    font-size: 1.2rem;
+    height: 3rem;
+    position: relative;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border: 2px solid #333333;
+    border-radius: 1rem;
+}

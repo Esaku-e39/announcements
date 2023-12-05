@@ -13,18 +13,20 @@ $(function () {
         '扉閉予告 タブレット [日] <button class="play" value="doorClose_man">a</button><br>' +
 
         '<audio src="../00-menu/sound/doorClose_woman.wav" id="doorClose_woman" preload="none"></audio>' +
-        '扉閉予告 車載女声 [日] <button class="play" value="doorClose_woman">a</button><br>' +
+        '扉閉予告 車載 [日] <button class="play" value="doorClose_woman">a</button><br>' +
 
         '<h3>出口ドア案内</h3>'+ ////////////////////////////////////////////////////////////////////////////
 
         '<audio src="../00-menu/sound/door_left_solo.wav" id="door_left_solo" preload="none"></audio>' +
-        'ドア側 左 [日英] <button class="play" value="door_left_solo">a</button><br>' +
+        'ドア側 左 [日] <button class="play" value="door_left_solo">a</button><br>' +
 
         '<audio src="../00-menu/sound/door_both_solo.wav" id="door_both_solo" preload="none"></audio>' +
-        'ドア側 両 [日英] <button class="play" value="door_both_solo">a</button><br>' +
+        'ドア側 両 [日] <button class="play" value="door_both_solo">a</button><br>' +
         
         '<audio src="../00-menu/sound/door_right_solo.wav" id="door_right_solo" preload="none"></audio>' +
-        'ドア側 右 [日英] <button class="play" value="door_right_solo">a</button><br>' +
+        'ドア側 右 [日] <button class="play" value="door_right_solo">a</button><br>' +
+
+        
 
         '<h3>雑案内</h3>'+ ////////////////////////////////////////////////////////////////////////////////////
 
@@ -33,6 +35,7 @@ $(function () {
 
         '<audio src="../00-menu/sound/watch_your_step.wav" id="watch_your_step" preload="none"></audio>' +
         '足元注意 [日] <button class="play" value="watch_your_step">a</button><br>' +
+
 
         '<h3>マナー啓発</h3>'+ ///////////////////////////////////////////////////////////////////////////////
 

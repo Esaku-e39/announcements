@@ -1,0 +1,115 @@
+body {
+    text-align: center;
+    /* 将来的にフォントを変えたい  https://kuneoresearch.com/webfont-8bit-game/ */
+}
+
+select {
+    font-size: 1.2rem;
+}
+
+#header {
+    border-bottom: solid 2px #0070ee;
+    margin-bottom: 10px;
+}
+
+#footer {
+    border-top: solid 1px lightgray;
+    padding-bottom: 10px;
+}
+
+#footer ul {
+    text-align: center;
+}
+
+#footer ul li {
+    padding: 0 4px;
+    display: inline;
+}
+
+/* ///////////////////////////////// */
+
+details {
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 0.5em 0.5em 0;
+    text-align: center;
+    background-color: #c8c8c8;
+}
+
+summary {
+    font-weight: bold;
+    margin: -0.5em -0.5em 0;
+    padding: 0.5em;
+    text-align: left;
+    background-color: #c8c8c8;
+}
+
+details[open] {
+    padding: 0.5em;
+    text-align: center;
+    background-color: #c8c8c8;
+}
+
+details[open] summary {
+    border-bottom: 1px solid #aaa;
+    margin-bottom: 0.5em;
+    text-align: left;
+    background-color: #c8c8c8;
+}
+
+.menu [open] {
+    height: 12rem;
+    overflow-y: scroll;
+}
+
+/* 再生ボタン */
+.play {
+    height: 3rem;
+    width: 3rem;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    color: #21a025;
+    background: #21a025;
+    border-radius: 50%;
+}
+
+/* 再生ボタン hover */
+.play:hover {
+    height: 3rem;
+    width: 3rem;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    color: #57cb5b;
+    background: #57cb5b;
+    border-radius: 50%;
+}
+
+/* 停止ボタン */
+.stop {
+    height: 2rem;
+    width: 2rem;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    color: #d00;
+    background: #d00;
+    border-radius: 50%;
+}
+
+/* 停止ボタン hover */
+.stop:hover {
+    height: 2rem;
+    width: 2rem;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    color: #f34d4d;
+    background: #f34d4d;
+    border-radius: 50%;
+}

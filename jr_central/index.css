@@ -1,0 +1,59 @@
+body {
+    text-align: center;
+    /* 将来的にフォントを変えたい  https://kuneoresearch.com/webfont-8bit-game/ */
+}
+
+select {
+    font-size: 1.2rem;
+}
+
+details {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 0.5em 0.5em 0;
+}
+
+summary {
+    font-weight: bold;
+    margin: -0.5em -0.5em 0;
+    padding: 0.5em;
+}
+
+#footer {
+    border-top: solid 1px lightgray;
+    padding-bottom: 10px;
+}
+
+#footer ul {
+    text-align: center;
+}
+
+#footer ul li {
+    padding: 0 4px;
+    display: inline;
+}
+/* ///////////////////////////////// */
+button{
+    height: 5rem;
+    width: 5rem;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    color: #ffffff;
+    font-size: 1.5rem;
+    background: #f08000;
+    border-radius: 1rem;
+}
+button:hover{
+    height: 5rem;
+    width: 5rem;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    color: #ffffff;
+    font-size: 1.5rem;
+    background: #ff0000;
+    border-radius: 1rem;
+}

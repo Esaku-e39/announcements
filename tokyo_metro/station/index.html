@@ -42,11 +42,13 @@
             音声停止中
         </div> -->
 
-    <!-- memo 音量調節をこの辺に作りたい -->
-
     <!-- ここから下は要検討 -->
     <div class="console">
         <td>再生中の音声を全て停止 <button class="stop" id="stopall">0</button></td>
+        <td>
+            <label>音量:<input type="range" id="volume" min="0" max="1" step="0.1" value="0.5"></label>
+            <a id="voral_range">0.5</a>
+        </td>
     </div>
 
     <h2>※おことわり※</h2>

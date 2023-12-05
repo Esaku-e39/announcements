@@ -10,16 +10,29 @@ $(() => {
         }
     });
 
+    //音量
+    $("#volume").on('input', () => {
+        $("#voral_range").html($("#volume").val());
+        let i = 0;
+        while (i < playing.length) {
+            $("#" + playing[i]).get(0).volume = $("#volume").val();
+            i = i + 1;
+        }
+    });
+
     // 発車放送 再生ボタン押下////////////////////////////////////////
     ////////////////////////////////////////////////////////////////
     function playdep(lineInit) {
         let selected = $("#selectDep" + lineInit).val();
         if (selected == "00-NA") {
             $("#" + selected).get(0).currentTime = 0;
+            $("#" + selected).get(0).volume = $("#volume").val();
             $("#" + selected).get(0).play();
             return;
         }
+
         $("#" + selected + "_dep").get(0).currentTime = 0;
+        $("#" + selected + "_dep").get(0).volume = $("#volume").val();
         $("#" + selected + "_dep").get(0).play();
         if ($.inArray(selected + "_dep", playing) == -1) {
             playing.push(selected + "_dep");
