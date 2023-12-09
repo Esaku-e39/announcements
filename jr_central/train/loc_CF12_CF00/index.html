@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>JR東海-車内放送</title>
+    <meta charset="UTF-8">
+    <!-- jQuery読み込み -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- キャッシュ対策 -->
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="index.css">
+    <script src="../00-menu/menu.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <!-- 音声指定 -->
+    <!-- 軽量化のため読み込みはjsで！！ preloadはnoneに設定 -->
+    <div id="audioLoad">
+        <!-- <audio src='sound/00-door_both.mp3' id='door_both' preload='none'></audio> -->
+        <audio src='sound/00-door_left_jpn.mp3' id='door_left_jpn' preload='none'></audio>
+        <audio src='sound/00-door_left_eng.mp3' id='door_left_eng' preload='none'></audio>
+        <audio src='sound/00-door_right_jpn.mp3' id='door_right_jpn' preload='none'></audio>
+        <audio src='sound/00-door_right_eng.mp3' id='door_right_eng' preload='none'></audio>
+        <audio src='sound/CF12_3.mp3' id='CF12_4' preload='none'></audio>
+        <audio src='sound/CF12_4.mp3' id='CF12_4' preload='none'></audio>
+        <audio src='sound/CF11_1.mp3' id='CF11_1' preload='none'></audio>
+        <audio src='sound/CF11_2.mp3' id='CF11_2' preload='none'></audio>
+        <audio src='sound/CF11_1.mp3' id='CF10_1' preload='none'></audio>
+        <audio src='sound/CF11_2.mp3' id='CF10_2' preload='none'></audio>
+        <audio src='sound/CF09_1.mp3' id='CF09_1' preload='none'></audio>
+        <audio src='sound/CF09_2.mp3' id='CF09_2' preload='none'></audio>
+        <audio src='sound/CF09_2-2.mp3' id='CF09_2-2' preload='none'></audio>
+        <audio src='sound/CF08_1.mp3' id='CF08_1' preload='none'></audio>
+        <audio src='sound/CF08_2.mp3' id='CF08_2' preload='none'></audio>
+        <audio src='sound/CF07_1.mp3' id='CF07_1' preload='none'></audio>
+        <audio src='sound/CF07_2.mp3' id='CF07_2' preload='none'></audio>
+        <audio src='sound/CF06_1.mp3' id='CF06_1' preload='none'></audio>
+        <audio src='sound/CF06_2.mp3' id='CF06_2' preload='none'></audio>
+        <audio src='sound/CF05_1.mp3' id='CF05_1' preload='none'></audio>
+        <audio src='sound/CF05_2.mp3' id='CF05_2' preload='none'></audio>
+        <audio src='sound/CF05_2-2.mp3' id='CF05_2-2' preload='none'></audio>
+        <audio src='sound/CF04_1.mp3' id='CF04_1' preload='none'></audio>
+        <audio src='sound/CF04_2.mp3' id='CF04_2' preload='none'></audio>
+        <audio src='sound/CF03_1.mp3' id='CF03_1' preload='none'></audio>
+        <audio src='sound/CF03_2.mp3' id='CF03_2' preload='none'></audio>
+        <audio src='sound/CF02_1.mp3' id='CF02_1' preload='none'></audio>
+        <audio src='sound/CF02_2.mp3' id='CF02_2' preload='none'></audio>
+        <audio src='sound/CF01_1.mp3' id='CF01_1' preload='none'></audio>
+        <audio src='sound/CF01_2.mp3' id='CF01_2' preload='none'></audio>
+        <audio src='sound/CF01_2.mp3' id='CF01_2' preload='none'></audio>
+        <audio src='sound/CF00_1.mp3' id='CF00_1' preload='none'></audio>
+        <audio src='sound/CF00_2.mp3' id='CF00_2' preload='none'></audio>
+        <audio src='sound/CF00_2-2.mp3' id='CF00_2-2' preload='none'></audio>
+    </div>
+
+
+    <header id="header" style="font-size:1.2rem;">
+        <span style="color:#000000"><b>普通</b></span>
+        <b>多治見</b>発
+        <b>名古屋</b>行き
+    </header>
+
+    <div style="color:#ff0000">
+        <b>！！再生ボタン連打厳禁！！</b><br>
+        予期せぬ動作をする場合があります。
+    </div>
+
+    一時停止 <button class="stop" value="pause">a</button>
+    再開 <button class="play" value="resume">a</button>
+    <br><br>
+    音声全てキャンセル <button class="stop" value="cancel">a</button><br>
+    <label>音量:<input type="range" id="volume" min="0" max="1" step="0.1" value="0.5"></label><a id="voral_range">0.5</a>
+
+    <div class="menu">
+        <!-- ----------------------------------------- -->
+        <!-- メニュー放送挿入部 -->
+        <!-- ----------------------------------------- -->
+    </div>
+
+    <br>
+    <details>
+        <summary>多治見 停車中</summary>
+        日英 <button class="play" value="CF12_3">a</button><br>
+        啓発付帯付き日英 <button class="play" value="CF12_4">a</button>
+    </details>
+    <br>
+    <details>
+        <summary>次は 古虎渓</summary>
+        日英 <button class="play" value="CF11_1">a</button>
+    </details>
+    <details>
+        <summary>まもなく 古虎渓</summary>
+        日英 <button class="play" value="CF11_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-CF11_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-CF11_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-CF11_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 定光寺</summary>
+        日英 <button class="play" value="CF10_1">a</button>
+    </details>
+    <details>
+        <summary>まもなく 定光寺</summary>
+        日英 <button class="play" value="CF10_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-CF10_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-CF10_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-CF10_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 高蔵寺</summary>
+        日英 <button class="play" value="CF09_1">a</button>
+    </details>
+    <details>
+        <summary>まもなく 高蔵寺</summary>
+        日英 <button class="play" value="CF09_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-CF09_2" value="left" checked>左</label>
+        <label><input type="radio" name="door-CF09_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-CF09_2" value="right">右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 神領</summary>
+        日英 <button class="play" value="CF08_1">a</button>
+    </details>
+    <details>
+        <summary>まもなく 神領</summary>
+        日英 <button class="play" value="CF08_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-CF08_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-CF08_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-CF08_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 春日井</summary>
+        日英 <button class="play" value="CF07_1">a</button>
+    </details>
+    <details>
+        <summary>まもなく 春日井</summary>
+        日英 <button class="play" value="CF07_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-CF07_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-CF07_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-CF07_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 勝川</summary>
+        日英 <button class="play" value="CF06_1">a</button>
+    </details>
+    <details>
+        <summary>まもなく 勝川</summary>
+        日英 <button class="play" value="CF06_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-CF06_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-CF06_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-CF06_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 新守山</summary>
+        日英 <button class="play" value="CF05_1">a</button>
+    </details>
+    <details>
+        <summary>まもなく 新守山</summary>
+        日英 <button class="play" value="CF05_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-CF05_2" value="left">左</label>
+        <label><input type="radio" name="door-CF05_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-CF05_2" value="right" checked>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 大曽根</summary>
+        日英 <button class="play" value="CF04_1">a</button>
+    </details>
+    <details>
+        <summary>まもなく 大曽根</summary>
+        日英 <button class="play" value="CF04_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-CF04_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-CF04_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-CF04_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 千種</summary>
+        日英 <button class="play" value="CF03_1">a</button>
+    </details>
+    <details>
+        <summary>まもなく 千種</summary>
+        日英 <button class="play" value="CF03_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-CF03_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-CF03_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-CF03_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 鶴舞</summary>
+        日英 <button class="play" value="CF02_1">a</button>
+    </details>
+    <details>
+        <summary>まもなく 鶴舞</summary>
+        日英 <button class="play" value="CF02_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-CF02_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-CF02_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-CF02_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 金山</summary>
+        日英 <button class="play" value="CF01_1">a</button>
+    </details>
+    <details>
+        <summary>まもなく 金山</summary>
+        日英 <button class="play" value="CF01_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-CF01_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-CF01_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-CF01_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 名古屋</summary>
+        日英 <button class="play" value="CF00_1">a</button>
+    </details>
+    <details>
+        <summary>まもなく 名古屋</summary>
+        日英 <button class="play" value="CF00_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-CF00_2" value="left">左</label>
+        <label><input type="radio" name="door-CF00_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-CF00_2" value="right" checked>右</label>
+    </details>
+
+
+    <footer id="footer">
+
+        <ul>
+            <li><a href="../../../index.html">Home</a></li>
+            <li><a href="../../index.html">JR Central</a></li>
+            <li><a href="../index.html">Another Train</a></li>
+        </ul>
+
+        <p></p>
+
+    </footer>
+</body>
+
+</html>

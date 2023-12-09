@@ -9,8 +9,8 @@ $(function () {
 
         '<h3>戸閉予告</h3>'+  /////////////////////////////////////////////////////////////////////////////
 
-        '<audio src="../00-menu/sound/doorClose_man.mp3" id="doorClose_man" preload="none"></audio>' +
-        '扉閉予告 [日] <button class="play" value="doorClose_man">a</button><br>' +
+        '<audio src="../00-menu/sound/doorClose.mp3" id="doorClose" preload="none"></audio>' +
+        '扉閉予告 [日] <button class="play" value="doorClose">a</button><br>' +
 
 
         '<h3>雑案内</h3>'+ ////////////////////////////////////////////////////////////////////////////////////
