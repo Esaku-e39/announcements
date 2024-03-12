@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>アストラムライン-駅</title>
+    <meta charset="UTF-8">
+    <!-- jQuery読み込み -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- キャッシュ対策 -->
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <!-- 音声指定 -->
+    <!-- 軽量化のため読み込みはjsで！！ preloadはnoneに設定 -->
+    <div id="audioLoad">
+        <audio src='sound/00-NA.mp3' id='00-NA' preload='none'></audio>
+        <!-- 発車 丸ノ内 -->
+        <audio src='sound/M01_1_dep.mp3' id='M01_1_dep' preload='none'></audio>
+        <audio src='sound/M01_2_dep.mp3' id='M01_2_dep' preload='none'></audio>
+        <!-- 発車有楽町 -->
+        <audio src='sound/Y07_1_dep.mp3' id='Y07_1_dep' preload='none'></audio>
+        <audio src='sound/Y07_2_dep.mp3' id='Y07_2_dep' preload='none'></audio>
+        <audio src='sound/Y08_1_dep.mp3' id='Y08_1_dep' preload='none'></audio>
+        <audio src='sound/Y08_2_dep.mp3' id='Y08_2_dep' preload='none'></audio>
+        <!-- 発車 副都心 -->
+        <audio src='sound/F07_3_dep.mp3' id='F07_3_dep' preload='none'></audio>
+        <audio src='sound/F07_4_dep.mp3' id='F07_4_dep' preload='none'></audio>
+        <audio src='sound/F08_3_dep.mp3' id='F08_3_dep' preload='none'></audio>
+        <audio src='sound/F08_4_dep.mp3' id='F08_4_dep' preload='none'></audio>
+    </div>
+
+    <!-- 再生中表示部 詳細未検討のため全体をコメントアウト -->
+    <!-- <div class="status">
+            音声停止中
+        </div> -->
+
+    <!-- ここから下は要検討 -->
+    <div class="console">
+        <td>再生中の音声を全て停止 <button class="stop" id="stopall">0</button></td>
+        <td>
+            <label>音量:<input type="range" id="volume" min="0" max="1" step="0.1" value="0.5"></label>
+            <a id="voral_range">0.5</a>
+        </td>
+    </div>
+
+    <h2>※おことわり※</h2>
+    試作品段階・作成途中のページです。先日少しだけ私自身で収録したもののみが再生できます。<br>
+    まだ触れるものが少なく、また私が発見していないようなバグが存在する可能性があります。<br>
+    要望等は私いーさくのtwitterまたはdiscordまでお気軽にお寄せください。<br>
+    twitter: @Esaku_e39 / Discord: k_e39
+
+    <h3>接近放送</h3>
+    準備中 Inoperative <button class="play" id="playAppr" disabled>0</button></td>
+
+    <!-- -------------------------------------------------------------------------- -->
+    <!-- -------------------------------------------------------------------------- -->
+    <h3>発車放送</h3>
+
+    <hr style="height: 5px; width: 500px; background-color:#f39700; border:none">
+    [G]準備中
+    <select aria-label="marunouchi" id="selectDepG" disabled>
+        <option value="00-NA">--選択--</option>
+        <option value="G01_1" disabled>G01-渋谷 女声</option>
+        <option value="G01_2" disabled>G01-渋谷 男声</option>
+        <option value="G02_1" disabled>G02-表参道 渋谷方面</option>
+        <option value="G02_2" disabled>G02-表参道 新橋・上野・浅草方面</option>
+    </select>
+    <td>再生 <button class="play" id="playdepG" disabled>0</button></td>
+    <td>停止 <button class="stop" id="stopdepG" disabled>0</button></td>
+    <br>
+    <hr style="height: 5px; width: 500px; background-color:#f39700; border:none">
+    <br><br>
+
+    <!-- -------------------------------------------------------------------------- -->
+
+    <hr style="height: 5px; width: 500px; background-color:#e60012; border:none">
+    [M]丸ノ内線
+    <select aria-label="marunouchi" id="selectDepM">
+        <option value="00-NA">--選択--</option>
+        <option value="M01_1">M01-荻窪 女声</option>
+        <option value="M01_2">M01-荻窪 男声</option>
+        <option value="M02_1" disabled>M02-南阿佐ヶ谷 荻窪方面</option>
+        <option value="M02_2" disabled>M02-南阿佐ヶ谷 新宿・東京・池袋方面</option>
+    </select>
+    <td>再生 <button class="play" id="playdepM">0</button></td>
+    <td>停止 <button class="stop" id="stopdepM">0</button></td>
+    <br>
+    <hr style="height: 5px; width: 500px; background-color:#e60012; border:none">
+    <br><br>
+
+    <!-- -------------------------------------------------------------------------- -->
+    <hr style="height: 5px; width: 500px; background-color:#9caeb7; border:none">
+    [H]準備中
+    <select aria-label="marunouchi" id="selectDepH" disabled>
+        <option value="00-NA">--選択--</option>
+        <option value="H01_1" disabled>H01-中目黒(東急) 女声</option>
+        <option value="H01_2" disabled>H01-中目黒(東急) 男声</option>
+        <option value="H02_1" disabled>H02-恵比寿 中目黒方面</option>
+        <option value="H02_2" disabled>H02-恵比寿 上野・押上方面</option>
+    </select>
+    <td>再生 <button class="play" id="playdepH" disabled>0</button></td>
+    <td>停止 <button class="stop" id="stopdepH" disabled>0</button></td>
+    <br>
+    <hr style="height: 5px; width: 500px; background-color:#9caeb7; border:none">
+    <br><br>
+
+    <!-- -------------------------------------------------------------------------- -->
+    <hr style="height: 5px; width: 500px; background-color:#00a7db; border:none">
+    [T]準備中
+    <select aria-label="marunouchi" id="selectDepT" disabled>
+        <option value="00-NA">--選択--</option>
+        <option value="T01_1" disabled>T01-中野(JR) 女声</option>
+        <option value="T01_2" disabled>T01-中野(JR) 男声</option>
+        <option value="T02_1" disabled>T02-落合 中野方面</option>
+        <option value="T02_2" disabled>T02-落合 大手町・西船橋方面</option>
+    </select>
+    <td>再生 <button class="play" id="playdepT" disabled>0</button></td>
+    <td>停止 <button class="stop" id="stopdepT" disabled>0</button></td>
+    <br>
+    <hr style="height: 5px; width: 500px; background-color:#00a7db; border:none">
+    <br><br>
+
+    <!-- -------------------------------------------------------------------------- -->
+    <hr style="height: 5px; width: 500px; background-color:#009944; border:none">
+    [C]準備中
+    <select aria-label="marunouchi" id="selectDepC" disabled>
+        <option value="00-NA">--選択--</option>
+        <option value="C01_1" disabled>C01-代々木上原(小田急) 女声</option>
+        <option value="C01_2" disabled>C01-代々木上原(小田急) 男声</option>
+        <option value="C02_1" disabled>C02-代々木公園 代々木上原方面</option>
+        <option value="C02_2" disabled>C02-代々木公園 大手町・綾瀬方面</option>
+    </select>
+    <td>再生 <button class="play" id="playdepC" disabled>0</button></td>
+    <td>停止 <button class="stop" id="stopdepC" disabled>0</button></td>
+    <br>
+    <hr style="height: 5px; width: 500px; background-color:#009944; border:none">
+    <br><br>
+
+    <!-- -------------------------------------------------------------------------- -->
+    <hr style="height: 6px; width: 500px; background-color:#d7c447; border:none">
+    [Y]有楽町線
+    <select aria-label="yurakucho" id="selectDepY">
+        <option value="00-NA">--選択--</option>
+        <option value="Y07_1">Y07-千川 新木場方面</option>
+        <option value="Y07_2">Y07-千川 小竹向原・和光市方面</option>
+        <option value="Y08_1">Y08-要町 新木場方面</option>
+        <option value="Y08_2">Y08-要町 小竹向原・和光市方面</option>
+    </select>
+    <td>再生 <button class="play" id="playdepY">0</button></td>
+    <td>停止 <button class="stop" id="stopdepY">0</button></td>
+    <br>
+    <hr style="height: 6px; width: 500px; background-color:#d7c447; border:none">
+    <br><br>
+
+    <!-- -------------------------------------------------------------------------- -->
+    <hr style="height: 5px; width: 500px; background-color:#9b7cb6; border:none">
+    [Z]準備中
+    <select aria-label="marunouchi" id="selectDepZ" disabled>
+        <option value="00-NA">--選択--</option>
+        <option value="Z01_1" disabled>Z01-渋谷(東急) 女声</option>
+        <option value="Z01_2" disabled>Z01-渋谷(東急) 男声</option>
+        <option value="Z02_1" disabled>Z02-表参道 渋谷方面</option>
+        <option value="Z02_2" disabled>Z02-表参道 大手町・押上方面</option>
+    </select>
+    <td>再生 <button class="play" id="playdepZ" disabled>0</button></td>
+    <td>停止 <button class="stop" id="stopdepZ" disabled>0</button></td>
+    <br>
+    <hr style="height: 5px; width: 500px; background-color:#9b7cb6; border:none">
+    <br><br>
+
+    <!-- -------------------------------------------------------------------------- -->
+    <hr style="height: 5px; width: 500px; background-color:#00ada9; border:none">
+    [N]準備中
+    <select aria-label="marunouchi" id="selectDepN" disabled>
+        <option value="00-NA">--選択--</option>
+        <option value="N01_1" disabled>N01-目黒(東急) 女声</option>
+        <option value="N01_2" disabled>N01-目黒(東急) 男声</option>
+        <option value="N02_1" disabled>N02-白金台 目黒方面</option>
+        <option value="N02_2" disabled>N02-白金台 永田町・赤羽岩淵方面</option>
+    </select>
+    <td>再生 <button class="play" id="playdepN" disabled>0</button></td>
+    <td>停止 <button class="stop" id="stopdepN" disabled>0</button></td>
+    <br>
+    <hr style="height: 5px; width: 500px; background-color:#00ada9; border:none">
+    <br><br>
+
+    <!-- -------------------------------------------------------------------------- -->
+    <hr style="height: 6px; width: 500px; background-color:#bb641d; border:none">
+    [F]副都心線
+    <select aria-label="fukutoshin" id="selectDepF">
+        <option value="00-NA">--選択--</option>
+        <option value="F07_3">F07-千川 渋谷方面</option>
+        <option value="F07_4">F07-千川 小竹向原・和光市方面</option>
+        <option value="F08_3">F08-要町 渋谷方面</option>
+        <option value="F08_4">F08-要町 小竹向原・和光市方面</option>
+    </select>
+    <td>再生 <button class="play" id="playdepF">0</button></td>
+    <td>停止 <button class="stop" id="stopdepF">0</button></td>
+    <br>
+    <hr style="height: 6px; width: 500px; background-color:#bb641d; border:none">
+    <footer id="footer">
+
+        <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../index.html">Astram Line</a></li>
+        </ul>
+
+        <p></p>
+
+    </footer>
+</body>
+
+</html>
