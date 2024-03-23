@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>アストラムライン-車内放送</title>
+    <meta charset="UTF-8">
+    <!-- jQuery読み込み -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- キャッシュ対策 -->
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="index.css">
+    <script src="../00-menu/menu.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <!-- 音声指定 -->
+    <!-- 軽量化のため読み込みはjsで！！ preloadはnoneに設定 -->
+    <div id="audioLoad">
+        <!-- <audio src='sound/00-door_both.mp3' id='door_both' preload='none'></audio> -->
+        <!-- <audio src='sound/00-door_left.mp3' id='door_left' preload='none'></audio> -->
+        <!-- <audio src='sound/00-door_right.mp3' id='door_right' preload='none'></audio> -->
+
+    </div>
+
+
+    <header id="header" style="font-size:1.2rem;">
+        <span style="color:#e6a900"><b>アストラムライン</b></span>
+        <b>本通</b>発
+        <b>広域公園前</b>行き
+    </header>
+
+    <div style="color:#ff0000">
+        <b>！！再生ボタン連打厳禁！！</b><br>
+        予期せぬ動作をする場合があります。
+    </div>
+
+    一時停止 <button class="stop" value="pause">a</button>
+    再開 <button class="play" value="resume">a</button>
+    <br><br>
+    音声全てキャンセル <button class="stop" value="cancel">a</button><br>
+    <label>音量:<input type="range" id="volume" min="0" max="1" step="0.1" value="0.8"></label><a id="voral_range">0.5</a>
+
+    <div class="menu">
+        <!-- ----------------------------------------- -->
+        <!-- メニュー放送挿入部 -->
+        <!-- ----------------------------------------- -->
+    </div>
+
+    <!-- ここから放送  -->
+    <!-- /////////////////////////////////////////////////////////////////////// -->
+    <!-- /////////////////////////////////////////////////////////////////////// -->
+    <br>
+    <details>
+        <summary>次は 県庁前</summary>
+        <button class="play" value="02_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 県庁前</summary>
+        <button class="play" value="02_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-02_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-02_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-02_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 城北</summary>
+        <button class="play" value="03_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 城北</summary>
+        <button class="play" value="03_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-03_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-03_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-03_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 新白島</summary>
+        <button class="play" value="04_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 新白島</summary>
+        <button class="play" value="04_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-04_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-04_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-04_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 白島</summary>
+        <button class="play" value="05_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 白島</summary>
+        <button class="play" value="05_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-05_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-05_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-05_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 牛田</summary>
+        <button class="play" value="06_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 牛田</summary>
+        <button class="play" value="06_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-06_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-06_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-06_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 不動院前</summary>
+        <button class="play" value="07_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 不動院前</summary>
+        <button class="play" value="07_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-07_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-07_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-07_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 祇園新橋北</summary>
+        <button class="play" value="08_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 祇園新橋北</summary>
+        <button class="play" value="08_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-08_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-08_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-08_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 西原</summary>
+        <button class="play" value="09_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 西原</summary>
+        <button class="play" value="09_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-09_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-09_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-09_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 中筋</summary>
+        <button class="play" value="10_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 中筋</summary>
+        <button class="play" value="10_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-10_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-10_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-10_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 古市</summary>
+        <button class="play" value="11_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 古市</summary>
+        <button class="play" value="11_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-11_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-11_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-11_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 大町</summary>
+        <button class="play" value="12_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 大町</summary>
+        <button class="play" value="12_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-12_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-12_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-12_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 毘沙門台</summary>
+        <button class="play" value="13_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 毘沙門台</summary>
+        <button class="play" value="13_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-13_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-13_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-13_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 安東</summary>
+        <button class="play" value="14_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 安東</summary>
+        <button class="play" value="14_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-14_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-14_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-14_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 上安</summary>
+        <button class="play" value="15_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 上安</summary>
+        <button class="play" value="15_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-15_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-15_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-15_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 高取</summary>
+        <button class="play" value="16_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 高取</summary>
+        <button class="play" value="16_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-16_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-16_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-16_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 長楽寺</summary>
+        <button class="play" value="17_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 長楽寺</summary>
+        <button class="play" value="17_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-17_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-17_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-17_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 伴</summary>
+        <button class="play" value="18_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 伴</summary>
+        <button class="play" value="18_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-18_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-18_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-18_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 大原</summary>
+        <button class="play" value="19_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 大原</summary>
+        <button class="play" value="19_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-19_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-19_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-19_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 伴中央</summary>
+        <button class="play" value="20_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 伴中央</summary>
+        <button class="play" value="20_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-20_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-20_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-20_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 大塚</summary>
+        <button class="play" value="21_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 大塚</summary>
+        <button class="play" value="21_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-21_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-21_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-21_2" value="right" disabled>右</label>
+    </details>
+    <br>
+    <details>
+        <summary>次は 広域公園前</summary>
+        <button class="play" value="22_1">a</button><br>
+    </details>
+    <details>
+        <summary>まもなく 広域公園前</summary>
+        <button class="play" value="22_2">a</button><br>
+        ドア側
+        <label><input type="radio" name="door-22_2" value="left" disabled>左</label>
+        <label><input type="radio" name="door-22_2" value="both" disabled>両</label>
+        <label><input type="radio" name="door-22_2" value="right" disabled>右</label>
+    </details>
+
+
+    <!-- フッター --------------------------------------------------------------------------------->
+    <footer id="footer">
+
+        <ul>
+            <li><a href="../../../index.html">Home</a></li>
+            <li><a href="../../index.html">Astram Line</a></li>
+            <li><a href="../index.html">Another Train</a></li>
+        </ul>
+
+        <p></p>
+
+    </footer>
+</body>
+
+</html>
