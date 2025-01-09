@@ -1,11 +1,32 @@
+/* ページ全体のスタイル */
 body {
     text-align: center;
-    /* 将来的にフォントを変えたい  https://kuneoresearch.com/webfont-8bit-game/ */
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-select {
-    font-size: 1.2rem;
+/* 2列コンテナ */
+.container {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
 }
+
+/* 各列のスタイル */
+.scroll-box {
+    flex: 1;
+    height: 55vh;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* select {
+    font-size: 1.2rem;
+} */
 
 #header {
     border-bottom: solid 2px #f38200;
@@ -60,6 +81,20 @@ details[open] summary {
 .menu [open] {
     height: 12rem;
     overflow-y: scroll;
+}
+
+.station_stop{
+    text-align: left;
+    color:#ffffff;
+    background-color: #4477ff;
+    border: 1px solid black;
+}
+
+.station_pass{
+    text-align: left;
+    color:#999999;
+    background-color: #90ffff;
+    border: 1px solid black;
 }
 
 /* 再生ボタン */

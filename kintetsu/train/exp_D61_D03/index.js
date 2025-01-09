@@ -55,8 +55,10 @@ $(() => {
         let door = $('input:radio[name=' + "door-" + selected + ']:checked').val();
         if (door == "left") {
             playList.push("door_left");
-        } else if (door == "both") {
-            playList.push("door_both");
+        } else if (door == "bothleft") {
+            playList.push("door_bothleft");
+        } else if (door == "bothright") {
+            playList.push("door_bothright");
         } else if (door == "right") {
             playList.push("door_right");
         }
