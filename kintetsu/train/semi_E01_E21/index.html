@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>近鉄-車内放送</title>
+    <meta charset="UTF-8">
+    <!-- jQuery読み込み -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- キャッシュ対策 -->
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="index.css">
+    <script src="../00-menu/menu.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <!-- 音声指定 -->
+    <!-- 軽量化のため読み込みはjsで！！ preloadはnoneに設定 -->
+    <div id="audioLoad">
+        <audio src='sound/00-door_left.mp3' id='door_left' preload='none'></audio>
+        <audio src='sound/00-door_bothleft.mp3' id='door_bothleft' preload='none'></audio>
+        <audio src='sound/00-door_bothright.mp3' id='door_bothright' preload='none'></audio>
+        <audio src='sound/00-door_right.mp3' id='door_right' preload='none'></audio>
+        <audio src='sound/E01_3.mp3' id='E01_3' preload='none'></audio>
+        <audio src='sound/E08_1.mp3' id='E08_1' preload='none'></audio>
+        <audio src='sound/E08_2.mp3' id='E08_2' preload='none'></audio>
+        <audio src='sound/E09_1.mp3' id='E09_1' preload='none'></audio>
+        <audio src='sound/E09_2.mp3' id='E09_2' preload='none'></audio>
+        <audio src='sound/E10_1.mp3' id='E10_1' preload='none'></audio>
+        <audio src='sound/E10_2.mp3' id='E10_2' preload='none'></audio>
+        <audio src='sound/E11_1.mp3' id='E11_1' preload='none'></audio>
+        <audio src='sound/E11_2.mp3' id='E11_2' preload='none'></audio>
+        <audio src='sound/E12_1.mp3' id='E12_1' preload='none'></audio>
+        <audio src='sound/E12_2.mp3' id='E12_2' preload='none'></audio>
+        <audio src='sound/E13_1.mp3' id='E13_1' preload='none'></audio>
+        <audio src='sound/E13_2.mp3' id='E13_2' preload='none'></audio>
+        <audio src='sound/E14_1.mp3' id='E14_1' preload='none'></audio>
+        <audio src='sound/E14_2.mp3' id='E14_2' preload='none'></audio>
+        <audio src='sound/E15_1.mp3' id='E15_1' preload='none'></audio>
+        <audio src='sound/E15_2.mp3' id='E15_2' preload='none'></audio>
+        <audio src='sound/E16_1.mp3' id='E16_1' preload='none'></audio>
+        <audio src='sound/E16_2.mp3' id='E16_2' preload='none'></audio>
+        <audio src='sound/E17_1.mp3' id='E17_1' preload='none'></audio>
+        <audio src='sound/E17_2.mp3' id='E17_2' preload='none'></audio>
+        <audio src='sound/E18_1.mp3' id='E18_1' preload='none'></audio>
+        <audio src='sound/E18_2.mp3' id='E18_2' preload='none'></audio>
+        <audio src='sound/E19_1.mp3' id='E19_1' preload='none'></audio>
+        <audio src='sound/E19_2.mp3' id='E19_2' preload='none'></audio>
+        <audio src='sound/E20_1.mp3' id='E20_1' preload='none'></audio>
+        <audio src='sound/E20_2.mp3' id='E20_2' preload='none'></audio>
+        <audio src='sound/E21_1.mp3' id='E21_1' preload='none'></audio>
+        <audio src='sound/E21_2.mp3' id='E21_2' preload='none'></audio>
+        <audio src='sound/E21_1-1.mp3' id='E21_1-1' preload='none'></audio>
+        <audio src='sound/E21_2-1.mp3' id='E21_2-1' preload='none'></audio>
+        <audio src='sound/E21_1-2.mp3' id='E21_1-2' preload='none'></audio>
+        <audio src='sound/E21_2-2.mp3' id='E21_2-2' preload='none'></audio>
+        <audio src='sound/E21_1-3.mp3' id='E21_1-3' preload='none'></audio>
+        <audio src='sound/E21_2-3.mp3' id='E21_2-3' preload='none'></audio>
+        <audio src='sound/E21_1-4.mp3' id='E21_1-4' preload='none'></audio>
+        <audio src='sound/E21_2-4.mp3' id='E21_2-4' preload='none'></audio>
+        <audio src='sound/E21_1-5.mp3' id='E21_1-5' preload='none'></audio>
+        <audio src='sound/E21_2-5.mp3' id='E21_2-5' preload='none'></audio>
+        <audio src='sound/E21_1-6.mp3' id='E21_1-6' preload='none'></audio>
+        <audio src='sound/E21_2-6.mp3' id='E21_2-6' preload='none'></audio>
+    </div>
+
+
+    <header id="header" style="font-size:1.2rem;">
+        <span style="color:#08c237"><b>準急</b></span>
+        <b>名古屋</b>発
+        <b>四日市</b>行き
+    </header>
+
+    <div style="color:#ff0000">
+        <b>！！再生ボタン連打厳禁！！</b><br>
+        予期せぬ動作をする場合があります。
+    </div>
+
+    一時停止 <button class="stop" value="pause">a</button>
+    再開 <button class="play" value="resume">a</button>
+    <br><br>
+    音声全てキャンセル <button class="stop" value="cancel">a</button><br>
+    <label>音量:<input type="range" id="volume" min="0" max="1" step="0.1" value="0.5"></label><a id="voral_range">0.5</a>
+
+    <!-- 2列のスクロールボックス -->
+    <div class="container">
+        <div class="scroll-box"> <!--左側スクロールボックス スポット放送を全部入れたい(願望)-->
+            <div class="menu">
+                <!-- ----------------------------------------- -->
+                <!-- メニュー放送挿入部 -->
+                <!-- ----------------------------------------- -->
+            </div>
+        </div>
+
+        <div class="scroll-box">
+            <div class="station_stop">名古屋</div>
+            <details open>
+                <summary>名古屋 停車中</summary>
+                日英中韓 <button class="play" value="E01_3">a</button>
+            </details>
+            <details open>
+                <summary>名古屋 発車後</summary>
+                日英中韓 <button class="play" value="E08_1">a</button>
+            </details>
+            <div class="station_pass">米野</div>
+            <div class="station_pass">黄金</div>
+            <div class="station_pass">烏森</div>
+            <div class="station_pass">八田</div>
+            <div class="station_pass">伏屋</div>
+            <div class="station_pass">戸田</div>
+            <details open>
+                <summary>蟹江 到着前</summary>
+                日英中韓 <button class="play" value="E08_2">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E08_2" value="left">左</label>
+                <label><input type="radio" name="door-E08_2" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E08_2" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E08_2" value="right">右</label>
+            </details>
+            <div class="station_stop">蟹江</div>
+            <details open>
+                <summary>蟹江 発車後</summary>
+                日英中韓 <button class="play" value="E09_1">a</button>
+            </details>
+            <details open>
+                <summary>富吉 到着前</summary>
+                日英中韓 <button class="play" value="E09_2">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E09_2" value="left">左</label>
+                <label><input type="radio" name="door-E09_2" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E09_2" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E09_2" value="right">右</label>
+            </details>
+            <div class="station_stop">富吉</div>
+            <details open>
+                <summary>富吉 発車後</summary>
+                日英中韓 <button class="play" value="E10_1">a</button>
+            </details>
+            <details open>
+                <summary>佐古木 到着前</summary>
+                日英中韓 <button class="play" value="E10_2">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E10_2" value="left" disabled>左</label>
+                <label><input type="radio" name="door-E10_2" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E10_2" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E10_2" value="right" disabled>右</label>
+            </details>
+            <div class="station_stop">佐古木</div>
+            
+            <details open>
+                <summary>佐古木 発車後</summary>
+                日英中韓 <button class="play" value="E11_1">a</button>
+            </details>
+            <details open>
+                <summary>弥富 到着前</summary>
+                日英中韓 <button class="play" value="E11_2">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E11_2" value="left">左</label>
+                <label><input type="radio" name="door-E11_2" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E11_2" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E11_2" value="right">右</label>
+            </details>
+            <div class="station_stop">弥富</div>
+            <details open>
+                <summary>弥富 発車後</summary>
+                日英中韓 <button class="play" value="E12_1">a</button>
+            </details>
+            <details open>
+                <summary>長島 到着前</summary>
+                日英中韓 <button class="play" value="E12_2">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E12_2" value="left" disabled>左</label>
+                <label><input type="radio" name="door-E12_2" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E12_2" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E12_2" value="right" disabled>右</label>
+            </details>
+            <div class="station_stop">長島</div>
+            <details open>
+                <summary>長島 発車後</summary>
+                日英中韓 <button class="play" value="E13_1">a</button>
+            </details>
+            <details open>
+                <summary>桑名 到着前</summary>
+                日英中韓 <button class="play" value="E13_2">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E13_2" value="left" disabled>左</label>
+                <label><input type="radio" name="door-E13_2" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E13_2" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E13_2" value="right" disabled>右</label>
+            </details>
+            <div class="station_stop">桑名</div>
+            <details open>
+                <summary>桑名 発車後</summary>
+                日英中韓 <button class="play" value="E14_1">a</button>
+            </details>
+            <details open>
+                <summary>益生 到着前</summary>
+                日英中韓 <button class="play" value="E14_2">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E14_2" value="left" disabled>左</label>
+                <label><input type="radio" name="door-E14_2" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E14_2" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E14_2" value="right" disabled>右</label>
+            </details>
+            <div class="station_stop">益生</div>
+            <details open>
+                <summary>益生 発車後</summary>
+                日英中韓 <button class="play" value="E15_1">a</button>
+            </details>
+            <details open>
+                <summary>伊勢朝日 到着前</summary>
+                日英中韓 <button class="play" value="E15_2">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E15_2" value="left" disabled>左</label>
+                <label><input type="radio" name="door-E15_2" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E15_2" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E15_2" value="right" disabled>右</label>
+            </details>
+            <div class="station_stop">伊勢朝日</div>
+            <details open>
+                <summary>伊勢朝日 発車後</summary>
+                日英中韓 <button class="play" value="E16_1">a</button>
+            </details>
+            <details open>
+                <summary>川越富洲原 到着前</summary>
+                日英中韓 <button class="play" value="E16_2">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E16_2" value="left">左</label>
+                <label><input type="radio" name="door-E16_2" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E16_2" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E16_2" value="right">右</label>
+            </details>
+            <div class="station_stop">川越富洲原</div>
+            <details open>
+                <summary>川越富洲原 発車後</summary>
+                日英中韓 <button class="play" value="E17_1">a</button>
+            </details>
+            <details open>
+                <summary>富田 到着前</summary>
+                日英中韓 <button class="play" value="E17_2">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E17_2" value="left">左</label>
+                <label><input type="radio" name="door-E17_2" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E17_2" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E17_2" value="right">右</label>
+            </details>
+            <div class="station_stop">富田</div>
+            <details open>
+                <summary>富田 発車後</summary>
+                日英中韓 <button class="play" value="E18_1">a</button>
+            </details>
+            <details open>
+                <summary>霞ヶ浦 到着前</summary>
+                日英中韓 <button class="play" value="E18_2">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E18_2" value="left" disabled>左</label>
+                <label><input type="radio" name="door-E18_2" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E18_2" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E18_2" value="right" disabled>右</label>
+            </details>
+            <div class="station_stop">霞ヶ浦</div>
+            <details open>
+                <summary>霞ヶ浦 発車後</summary>
+                日英中韓 <button class="play" value="E19_1">a</button>
+            </details>
+            <details open>
+                <summary>阿倉川 到着前</summary>
+                日英中韓 <button class="play" value="E19_2">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E19_2" value="left" disabled>左</label>
+                <label><input type="radio" name="door-E19_2" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E19_2" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E19_2" value="right" disabled>右</label>
+            </details>
+            <div class="station_stop">阿倉川</div>
+            <details open>
+                <summary>阿倉川 発車後</summary>
+                日英中韓 <button class="play" value="E20_1">a</button>
+            </details>
+            <details open>
+                <summary>川原町 到着前</summary>
+                日英中韓 <button class="play" value="E20_2">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E20_2" value="left" disabled>左</label>
+                <label><input type="radio" name="door-E20_2" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E20_2" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E20_2" value="right" disabled>右</label>
+            </details>
+            <div class="station_stop">川原町</div>
+            <details open>
+                <summary>川原町 発車後</summary>
+                日英中韓 四日市止<button class="play" value="E21_1">a</button> <br>
+                日英中韓 普通塩浜に充当<button class="play" value="E21_1-1">a</button> <br>
+                日英中韓 普通白子に充当<button class="play" value="E21_1-2">a</button> <br>
+                日英中韓 普通白塚に充当<button class="play" value="E21_1-3">a</button> <br>
+                日英中韓 普通津新町に充当<button class="play" value="E21_1-4">a</button> <br>
+                日英中韓 普通中川に充当<button class="play" value="E21_1-5">a</button> <br>
+                日英中韓 急行平田町に充当<button class="play" value="E21_1-6">a</button>
+            </details>
+            <details>
+                <summary>四日市 到着前 (四日市止)</summary>
+                日英中韓 <button class="play" value="E21_2">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E21_2" value="left">左</label>
+                <label><input type="radio" name="door-E21_2" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E21_2" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E21_2" value="right">右</label>
+            </details>
+            <details>
+                <summary>四日市 到着前 (普通塩浜に充当)</summary>
+                日英中韓 <button class="play" value="E21_2-1">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E21_2-1" value="left">左</label>
+                <label><input type="radio" name="door-E21_2-1" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E21_2-1" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E21_2-1" value="right">右</label>
+            </details>
+            <details>
+                <summary>四日市 到着前 (普通白子に充当)</summary>
+                日英中韓 <button class="play" value="E21_2-2">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E21_2-2" value="left">左</label>
+                <label><input type="radio" name="door-E21_2-2" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E21_2-2" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E21_2-2" value="right">右</label>
+            </details>
+            <details>
+                <summary>四日市 到着前 (普通白塚に充当)</summary>
+                日英中韓 <button class="play" value="E21_2-3">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E21_2-3" value="left">左</label>
+                <label><input type="radio" name="door-E21_2-3" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E21_2-3" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E21_2-3" value="right">右</label>
+            </details>
+            <details>
+                <summary>四日市 到着前 (普通津新町に充当)</summary>
+                日英中韓 <button class="play" value="E21_2-4">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E21_2-4" value="left">左</label>
+                <label><input type="radio" name="door-E21_2-4" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E21_2-4" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E21_2-4" value="right">右</label>
+            </details>
+            <details>
+                <summary>四日市 到着前 (普通中川に充当)</summary>
+                日英中韓 <button class="play" value="E21_2-5">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E21_2-5" value="left">左</label>
+                <label><input type="radio" name="door-E21_2-5" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E21_2-5" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E21_2-5" value="right">右</label>
+            </details>
+            <details>
+                <summary>四日市 到着前 (急行平田町に充当)</summary>
+                日英中韓 <button class="play" value="E21_2-6">a</button><br>
+                ドア側
+                <label><input type="radio" name="door-E21_2-6" value="left">左</label>
+                <label><input type="radio" name="door-E21_2-6" value="bothleft" disabled>両(左側先開)</label>
+                <label><input type="radio" name="door-E21_2-6" value="bothright" disabled>両(右側先開)</label>
+                <label><input type="radio" name="door-E21_2-6" value="right">右</label>
+            </details>
+            <div class="station_stop">四日市</div>
+        </div>
+    </div>
+
+    <footer id="footer">
+
+        <ul>
+            <li><a href="../../../index.html">Home</a></li>
+            <li><a href="../../index.html">Kintetsu</a></li>
+            <li><a href="../index.html">Another Train</a></li>
+        </ul>
+
+        <p></p>
+
+    </footer>
+</body>
+
+</html>

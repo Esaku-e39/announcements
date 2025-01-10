@@ -289,9 +289,6 @@ $(function () {
         '<audio src="../00-menu/sound/090_4_ラッシュ時等の迷惑防止放送.mp3" id="090" preload="none"></audio>' +
         '090_4_ラッシュ時等の迷惑防止放送<button class="play" value="090">a</button><br>' +
 
-        '<audio src="../00-menu/sound/ファイル名.mp3" id="ファイルid" preload="none"></audio>' +
-        'タイトル<button class="play" value="ファイルid">a</button><br>' +
-
         '<audio src="../00-menu/sound/091_4_濡れた傘の迷惑放送.mp3" id="091" preload="none"></audio>' +
         '091_4_濡れた傘の迷惑放送<button class="play" value="091">a</button><br>' +
 
@@ -620,9 +617,6 @@ $(function () {
 
         '<audio src="../00-menu/sound/198_4_異例時、運転見合わせ（理由なし）.mp3" id="198" preload="none"></audio>' +
         '198_4_異例時、運転見合わせ（理由なし）<button class="play" value="198">a</button><br>' +
-
-        '<audio src="../00-menu/sound/ファイル名.mp3" id="ファイルid" preload="none"></audio>' +
-        'タイトル<button class="play" value="ファイルid">a</button><br>' +
 
         '<audio src="../00-menu/sound/199_4_異例時、ダイヤ乱れ発生（理由なし）.mp3" id="199" preload="none"></audio>' +
         '199_4_異例時、ダイヤ乱れ発生（理由なし）<button class="play" value="199">a</button><br>' +
